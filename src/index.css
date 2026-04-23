@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-garamond: "Cormorant Garamond", serif;
+  
+  --color-primary: #003366;
+  --color-accent: #0066CC;
+  --color-accent-light: #E6F0FF;
+  --color-bg-main: #FFFFFF;
+  --color-bg-soft: #F0F7FF;
+  --color-text-dark: #001A33;
+  --color-text-muted: #576F85;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-main text-text-dark font-sans antialiased selection:bg-primary/20;
+    cursor: none;
+  }
+  
+  h1, h2, h3, h4, .font-serif {
+    @apply font-serif text-text-dark;
+  }
+}
+
+/* Custom Cursor Classes */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #003366;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 51, 102, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease-out;
+}
+
+/* Utilities */
+.text-blue-gradient {
+  background: linear-gradient(135deg, #003366 0%, #0066CC 50%, #003366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(135deg, #003366 0%, #0066CC 100%);
+}
+
+.mask-fade-in {
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
+  .cursor-dot, .cursor-outline {
+    display: none !important;
+  }
+}
